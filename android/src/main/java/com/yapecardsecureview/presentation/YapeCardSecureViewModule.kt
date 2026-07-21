@@ -1,5 +1,6 @@
 package com.yapecardsecureview.presentation
 
+import android.view.WindowManager
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
@@ -26,6 +27,13 @@ class YapeCardSecureViewModule(
       return
     }
 
+    reactApplicationContext.currentActivity?.runOnUiThread {
+      reactApplicationContext.currentActivity?.window?.setFlags(
+        WindowManager.LayoutParams.FLAG_SECURE,
+        WindowManager.LayoutParams.FLAG_SECURE,
+      )
+    }
+
     val params = Arguments.createMap().apply { putString("cardId", cardId) }
     sendEvent("onSecureViewOpened", params)
 
@@ -35,6 +43,12 @@ class YapeCardSecureViewModule(
   }
 
   override fun closeSecureView() {
+    reactApplicationContext.currentActivity?.runOnUiThread {
+      reactApplicationContext.currentActivity?.window?.clearFlags(
+        WindowManager.LayoutParams.FLAG_SECURE,
+      )
+    }
+
     val params = Arguments.createMap().apply { putString("reason", "USER_DISMISS") }
     sendEvent("onSecureViewClosed", params)
   }
