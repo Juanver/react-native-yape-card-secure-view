@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { useSecureCard } from 'react-native-yape-card-secure-view';
+import { useSecureCard } from '../../src/hooks/useSecureCard';
 
 export default function App() {
   const { openCard, closeCard, isOpen, isRendering, error } = useSecureCard();
