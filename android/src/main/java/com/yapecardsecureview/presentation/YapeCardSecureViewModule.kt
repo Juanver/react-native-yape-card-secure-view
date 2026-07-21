@@ -37,20 +37,21 @@ class YapeCardSecureViewModule(
     val params = Arguments.createMap().apply { putString("cardId", cardId) }
     sendEvent("onSecureViewOpened", params)
 
-    sendEvent("onCardDataShown", params)
+    val paramsShow = Arguments.createMap().apply { putString("cardId", cardId) }
+    sendEvent("onCardDataShown", paramsShow)
 
     promise.resolve(true)
   }
 
   override fun closeSecureView() {
+    val params = Arguments.createMap().apply { putString("reason", "USER_DISMISS") }
+    sendEvent("onSecureViewClosed", params)
+
     reactApplicationContext.currentActivity?.runOnUiThread {
       reactApplicationContext.currentActivity?.window?.clearFlags(
         WindowManager.LayoutParams.FLAG_SECURE,
       )
     }
-
-    val params = Arguments.createMap().apply { putString("reason", "USER_DISMISS") }
-    sendEvent("onSecureViewClosed", params)
   }
 
   override fun addListener(eventType: String) {}
