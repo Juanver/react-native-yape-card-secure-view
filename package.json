@@ -68,7 +68,10 @@
     "@react-native/eslint-config": "0.85.0",
     "@react-native/jest-preset": "0.85.0",
     "@release-it/conventional-changelog": "^11.0.1",
+    "@testing-library/react-native": "^14.0.1",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.2.0",
+    "@types/react-test-renderer": "^19",
     "commitlint": "^21.0.2",
     "del-cli": "^7.0.0",
     "eslint": "^9.39.4",
@@ -81,6 +84,7 @@
     "react": "19.2.3",
     "react-native": "0.85.0",
     "react-native-builder-bob": "^0.41.0",
+    "react-test-renderer": "19.2.3",
     "release-it": "^20.2.0",
     "turbo": "^2.9.16",
     "typescript": "^6.0.3"
@@ -149,20 +153,6 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "jest": {
-    "preset": "@react-native/jest-preset",
-    "testEnvironmentOptions": {
-      "customExportConditions": [
-        "require",
-        "react-native",
-        "<%- project.sourceCondition -%>"
-      ]
-    },
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
   },
   "create-react-native-library": {
     "type": "turbo-module",
