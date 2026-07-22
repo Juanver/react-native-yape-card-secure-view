@@ -1,7 +1,7 @@
 {
   "name": "react-native-yape-card-secure-view",
   "version": "0.1.0",
-  "description": "library to validate card secure toke",
+  "description": "Librería para validar tokens y mostrar data sensible de tarjetas.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
